@@ -26,8 +26,8 @@ A simple and functional ToDo List application built using **Python Flask** that 
 ---
 ## 📷 Project Screenshots
 
-![Project Screenshot](screenshot_105.png)
-![Another Screenshot](screenshot_106.png)
+![Project Screenshot](Screenshot_(106).png)
+![Another Screenshot](Screenshot_(106).png)
 
 ## 📂 Project Structure
 
