@@ -22,12 +22,16 @@ A simple and functional ToDo List application built using **Python Flask** that 
 - **Frontend:** HTML5, CSS3 (Bootstrap optional)
 - **Templating Engine:** Jinja2
 
+
 ---
+## 📷 Project Screenshots
+
+![Project Screenshot](screenshot_105.png)
+![Another Screenshot](screenshot_106.png)
 
 ## 📂 Project Structure
 
-![Project Screenshot](Screenshot (105).png)
-![](Screenshot (106).png)
+
 ---
 
 ## ⚙️ Installation & Usage
