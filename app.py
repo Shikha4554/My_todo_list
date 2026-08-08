@@ -1,3 +1,5 @@
+"""A small Flask + SQLAlchemy CRUD todo list app."""
+
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -10,7 +12,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-# Database model
+
 class Todo(db.Model):
     sno = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
@@ -20,9 +22,10 @@ class Todo(db.Model):
     def __repr__(self):
         return f"{self.sno} - {self.title}"
 
-# Home page with add + read
+
 @app.route("/", methods=['GET', 'POST'])
 def index():
+    """List all todos; POSTing here creates a new one."""
     if request.method == 'POST':
         title = request.form['title']
         desc = request.form['desc']
@@ -32,9 +35,10 @@ def index():
     alltodo = Todo.query.all()
     return render_template("index.html", alltodo=alltodo)
 
-# Update
+
 @app.route("/update/<int:sno>", methods=['GET', 'POST'])
 def update(sno):
+    """Edit a single todo by its serial number (404s if it doesn't exist)."""
     todo = Todo.query.get_or_404(sno)
     if request.method == 'POST':
         todo.title = request.form['title']
@@ -43,13 +47,15 @@ def update(sno):
         return redirect("/")
     return render_template("update.html", todo=todo)
 
-# Delete
+
 @app.route("/delete/<int:sno>")
 def delete(sno):
+    """Delete a todo by its serial number."""
     todo = Todo.query.get_or_404(sno)
     db.session.delete(todo)
     db.session.commit()
     return redirect("/")
+
 
 if __name__ == "__main__":
     with app.app_context():
